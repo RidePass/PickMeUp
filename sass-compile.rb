@@ -4,4 +4,4 @@
 # Can also run so it auto updates, needs `ruby` and `sass` gems installed
 exec 'sass --watch .\core\scss\:public/css'
 
-# To run this script, from main folder type `ruby .\sass-compile.rb`
+# To run this script, from main folder type `ruby ./sass-compile.rb`
