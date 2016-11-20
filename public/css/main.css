@@ -47,6 +47,9 @@ a {
   max-width: 50%;
   margin-top: .5em; }
 
+.button-list {
+  margin: 1em; }
+
 @font-face {
   font-family: bauhaus;
   src: url(/fonts/bauhaus-93.ttf); }
