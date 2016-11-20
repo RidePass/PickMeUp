@@ -1,3 +1,10 @@
+$dark-powder-blue:#00308D;
+$denim:#175DC1;
+$havelock-blue: #4D95D9;
+$hawkes-blue: #CCDFF3;
+$maya-blue: #6CBDF1;
+
+
 body {
         font-family: Roboto, Arial, sans-serif;
         background: #ECEFF1;
@@ -50,8 +57,86 @@ body {
         box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
       }
 
-   $dark-powder-blue:#00308D;
-   $denim:#175DC1;
-   $havelock-blue: #4D95D9;
-   $hawkes-blue: #CCDFF3;
-   $maya-blue: #6CBDF1;
+.menu-logo{
+  max-width:50%; 
+  margin-top: .5em;
+}
+
+
+@font-face {
+    font-family: bauhaus;
+    src: url(/fonts/bauhaus-93.ttf);
+}
+
+.logo {
+    font-family: bauhaus;
+    font-size: xx-large;
+    color: white;
+}
+
+
+// Main Menu start
+$dropDown       : false;
+.navbar-default {
+  background-color: $denim;
+  border-color: $havelock-blue;
+  .navbar-brand {
+    color: $hawkes-blue;
+    &:hover, &:focus {
+      color: $maya-blue; }}
+  .navbar-text {
+    color: $hawkes-blue; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $hawkes-blue;
+        &:hover,  &:focus {
+          color: $maya-blue; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $denim;
+          > li {
+            > a {
+              color: $hawkes-blue;
+              &:hover,  &:focus {
+                color: $maya-blue;
+                background-color: $havelock-blue; }}
+            > .divider {
+              background-color: $havelock-blue;}}}}}
+    @if $dropDown {
+      .open .dropdown-menu > .active {
+        > a, > a:hover, > a:focus {
+          color: $maya-blue;
+          background-color: $havelock-blue; }}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $maya-blue;
+        background-color: $havelock-blue; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $maya-blue;
+        background-color: $havelock-blue; }}}
+  .navbar-toggle {
+    border-color: $havelock-blue;
+    &:hover, &:focus {
+      background-color: $havelock-blue; }
+    .icon-bar {
+      background-color: $hawkes-blue; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $hawkes-blue; }
+  .navbar-link {
+    color: $hawkes-blue;
+    &:hover {
+      color: $maya-blue; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $hawkes-blue;
+      &:hover, &:focus {
+        color: $maya-blue; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $maya-blue;
+        background-color: $havelock-blue; }}}
+}
