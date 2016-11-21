@@ -7,6 +7,10 @@
 <!--This is the stylesheet/style stuff for stars-->
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
+  <script src="js/w3.js"></script>
+  <meta name="theme-color" content="#00308D">
+  <link rel="stylesheet" href="css/main.css">
+
 <style>
   div.stars {
     width: 270px;
@@ -61,6 +65,9 @@
 </head>
 
 <body>
+
+  <div w3-include-html="menu.html"></div>
+  <div class="container text-center">
 <h1>Ride Summary</h1>
 
 
@@ -109,7 +116,10 @@
   <ul><button type="button" style=" width: 80%;" class="btn btn-primary btn-lg"
 	onClick="window.location.href='planRide.html'"
       >Submit</button></ul>
-
+</div>
 </body>
+<script>
+    w3IncludeHTML();
+</script>
 
 </html>
