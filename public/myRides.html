@@ -6,13 +6,50 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/w3.js"></script>
     <meta name="theme-color" content="#00308D">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <div w3-include-html="menu.html"></div>
     <div class="container text-center">
-        <h1>My Rides</h1>
+        <h2>My Rides</h2>
         <!--TODO get this to load from firebase database-->
+
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">From Home to Costco</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Time: 1:45 PM Today</p>
+                        <p><i class="fa fa-map" aria-hidden="true"></i></p>
+                    </div>
+                    <div class="panel-footer">Cost: $9:50</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse2">From Smiths to Home</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Time: 11:15 AM Tomorrow</p>
+                        <p><i class="fa fa-map" aria-hidden="true"></i></p>
+                    </div>
+                    <div class="panel-footer">Cost: $12:75</div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </body>
 
