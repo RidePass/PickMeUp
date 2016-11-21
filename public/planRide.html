@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
 <head>
-  <title>Plan Ride</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/w3.js"></script>
-  <meta name="theme-color" content="#00308D">
+    <title>Plan Ride</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/w3.js"></script>
+    <meta name="theme-color" content="#00308D">
 
-  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-  <script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script>
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyDgm9IG52Y32uloFDMIu_F-lZgtKEMlB3s",
@@ -35,23 +35,19 @@
 </head>
 
 <body>
-  <div w3-include-html="menu.html"></div>
-  <div class="container text-center">
-    <h1>Schedule Your Ride!</h1>
+    <div w3-include-html="menu.html"></div>
+    <div class="container text-center">
+        <h1>Schedule Your Ride!</h1>
 
-    <div id="map" class="col-md-8 col-md-offset-2"></div>
-    <button type="button" style=" width: 80%;" class="btn btn-primary btn-lg button-list"
-	onClick="window.location.href='rideWaiting.html'"
-    >Get Ride Now</button>
-    
-    <button type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list"
-	onClick="window.location.href='rideWaiting.html'"
-    >Schedule Ride</button>
-  
+        <div id="map" class="col-md-8 col-md-offset-2"></div>
+        <button type="button" style=" width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='rideWaiting.html'">Get Ride Now</button>
 
-  </div>
+        <button type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='rideWaiting.html'">Schedule Ride</button>
 
-      <script>
+
+    </div>
+
+    <script>
       var map;
       function initMap() {
           var marker;
@@ -64,7 +60,8 @@
         }
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.397, lng: -111.644},
-          zoom: 30
+          zoom: 14,
+          gestureHandling: 'greedy'
         });
 
         map.addListener('click', function(e) {
@@ -91,15 +88,7 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-
-
-
-
-
-
-
       }
-
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
