@@ -13,6 +13,50 @@
   <meta name="theme-color" content="#00308D">
   <link rel="stylesheet" href="css/main.css">
 
+
+  <script>
+
+	var timeElapsed;
+
+	$(document).ready(function() {
+
+		var clock = document.getElementById("clock");
+	
+		timeElapsed = 0;
+
+		var intervalTimer = setInterval(function(){
+
+			timeElapsed += 1;
+			
+			var secs = timeElapsed % 60;
+
+			var mins = Math.ceil((timeElapsed) / 60);
+
+			var remainingMins = 5 - mins;
+
+			var remainingSecs = 60 - secs;
+
+			var minString = remainingMins.toString();
+
+			var secString;
+
+			if(remainingSecs == 60)
+			{
+				secString = '00';
+			}
+			else
+			{
+				secString = (remainingSecs < 10 ? '0' : '') + remainingSecs.toString();
+			}
+
+			clock.innerHTML = minString + ':' + secString;
+		
+
+		}, 1000);
+
+	});
+  </script>
+
 </head>
 
 <body>
@@ -29,10 +73,16 @@
     <br>
     <br>
 
+    <div class = "container text-center"> Time Remaining:</div>
+    <div class = "container text-center" id="clock">5:00</div>
+    <div class = "container text-center">The car is a green Batmobile</div>
+    <div class = "container text-center">License Plate #: BMPSBEE</div>
+
     <button type="button" style=" width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='endride.html'">Leave Feedback</button>
 
     <button type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='planRide.html'">Cancel Ride</button>
   </div>
+
 
 
 </body>
