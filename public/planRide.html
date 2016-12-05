@@ -38,13 +38,14 @@
     <div w3-include-html="menu.html"></div>
     <div class="container text-center">
         <h1>Schedule Your Ride!</h1>
-        <p>(Press and hold to drop a pin on the desired destination)</p>
+        <p>(Click the map to set destination)</p>
+        <div id=total></div>
+        <div id=cost></div>
 
         <div id="map" class="col-md-8 col-md-offset-2"></div>
         <button type="button" style=" width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='rideWaiting.html'">Get Ride Now</button>
 
         <button type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='rideWaiting.html'">Schedule Ride</button>
-
 
     </div>
 
@@ -61,6 +62,23 @@ function initMap() {
 
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
+    directionsDisplay.draggable = true;
+
+    directionsDisplay.addListener('directions_changed', function() {
+          computeTotalDistance(directionsDisplay.getDirections());
+    });
+
+    function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+        }
+        total = (total / 1000) * 0.621371;
+        var cost = total *1.35 + 3;
+        document.getElementById('total').innerHTML = "Trip length: " +  total.toFixed(2) + ' miles';
+        document.getElementById('cost').innerHTML = "Trip cost: $" +  cost.toFixed(2) + "<br/> ($3 pickup charge included)";
+      }
 
     function placeMarkerAndPanTo(latLng, map) {
         directionsDisplay.setMap(map);
