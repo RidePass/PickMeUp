@@ -50,9 +50,26 @@
 			}
 
 			clock.innerHTML = minString + ':' + secString;
+
+			if(remainingMins <= 0)
+			{
+				if(remainingSecs <= 0)
+				{
+				     clearInterval(intervalTimer);
+				}
+			}
 		
 
 		}, 1000);
+
+
+
+		var changeTimer = setTimeout(function()
+		{
+
+			window.location.href = "endride.html";		
+
+		}, 300000);
 
 	});
   </script>
