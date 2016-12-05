@@ -7,6 +7,24 @@
     <script src="js/w3.js"></script>
     <meta name="theme-color" content="#00308D">
     <link rel="stylesheet" href="css/main.css">
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDgm9IG52Y32uloFDMIu_F-lZgtKEMlB3s",
+    authDomain: "pick-me-up-9bad6.firebaseapp.com",
+    databaseURL: "https://pick-me-up-9bad6.firebaseio.com",
+    storageBucket: "pick-me-up-9bad6.appspot.com",
+    messagingSenderId: "113687637647"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+
+
+
 </head>
 
 <body>
@@ -15,7 +33,10 @@
         <h2>My Rides</h2>
         <!--TODO get this to load from firebase database-->
 
-        <div class="panel-group">
+        <div id=rideContainer>
+
+        </div>
+        <!--<div class="panel-group">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -47,12 +68,58 @@
                     <div class="panel-footer">Cost: $12:75</div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
     </div>
 </body>
 
 <script>w3IncludeHTML();</script>
+<script>
+
+       $('document').ready(function(){ 
+
+        var commentsRef = firebase.database().ref('rides/');
+    commentsRef.on('child_added', function (data) {
+        var currentDate = new Date();
+        var rideDate = new Date(data.val().date);
+
+        var rideStatus; // past present or future ride 
+        if (currentDate.getTime() > rideDate.getTime()){
+            // Ride is in past
+            rideStatus = "<kbd>On the way</kbd>";
+            if (currentDate.getTime() - rideDate.getTime() > 1000 * 60 * 8){
+                // 8 minutes in past or more
+                rideStatus = "<kbd>Past</kbd>";
+            }
+        }
+        else {
+            // Ride is in the future
+            rideStatus = "<kbd>Scheduled</kbd>";
+        }
+
+        $('#rideContainer').append(
+            '<div class="panel-group">' +
+            '<div class="panel panel-primary">' +
+            '    <div class="panel-heading">' +
+            '        <h4 class="panel-title">' +
+            rideDate.toDateString() +
+            '        </h4>'+
+            '    </div>'+
+            '        <div class="panel-body">'+
+            '<p>Time: ' + rideDate.toLocaleTimeString() + ' ' + rideStatus + 
+            '           <p><i class="fa fa-map" aria-hidden="true"></i></p>'+
+            '       </div>'+
+            '       <div class="panel-footer">Cost: $' + Number(data.val().cost).toFixed(2) + '</div>'+
+            '</div>'+
+        '</div>');
+
+
+
+    //   $('#display_' + data.key).html(data.val());
+    //   calculationInfo[data.key] = data.val();
+    });
+});
+</script>
 
 </html>

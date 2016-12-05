@@ -45,20 +45,32 @@
         <div id="map" class="col-md-8 col-md-offset-2"></div>
         <button id=makeRide type="button" style=" width: 80%;" class="btn btn-primary btn-lg button-list" >Get Ride Now</button>
 
-        <button type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list" onClick="window.location.href='rideWaiting.html'">Schedule Ride</button>
+        <button id=scheduleRide type="button" style="width: 80%;" class="btn btn-primary btn-lg button-list">Schedule Ride</button>
 
     </div>
 
     <script>
+    function redirectToRideWaiting(){
+        window.location.href = "/rideWaiting.html";
+    }
      $('#makeRide').click(function(){
          var date = new Date();
          firebase.database().ref('rides/' + date.getTime()).set({
             cost: localStorage.tripCost,
             distance:localStorage.tripDistance,
-            date: date.toDateString()
+            date: date.toString()
         });
-        window.location.href = "/rideWaiting.html";
+        setTimeout(redirectToRideWaiting, 1000); // Redirecting right away did not allow for the database write.
+    });
 
+    $('#scheduleRide').click(function(){
+         var date = new Date();
+         firebase.database().ref('rides/' + date.getTime()).set({
+            cost: localStorage.tripCost,
+            distance:localStorage.tripDistance,
+            date: date.toString()
+        });
+        setTimeout(redirectToRideWaiting, 1000); // Redirecting right away did not allow for the database write.
     });
 var map;
 var marker;
